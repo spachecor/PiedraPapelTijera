@@ -4,6 +4,11 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
+/**
+ * Clase que define la estructura y métodos de la entidad Juego.
+ * @author Selene
+ * @version 1.0
+ */
 @Entity
 @Table(name = "juego")
 public class Juego extends Entidad{

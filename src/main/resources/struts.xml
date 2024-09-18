@@ -1,0 +1,10 @@
+<struts>
+    <package name="default" namespace="/" extends="struts-default">
+        <action name="hello" class="com.ejemplo.actions.HelloAction">
+            <result name="success">/index.jsp</result>
+        </action>
+        <action name="inicio">
+            <result>/index.jsp</result>
+        </action>
+    </package>
+</struts>

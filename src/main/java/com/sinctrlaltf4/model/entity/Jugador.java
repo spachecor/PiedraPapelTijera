@@ -2,6 +2,11 @@ package com.sinctrlaltf4.model.entity;
 
 import jakarta.persistence.*;
 
+/**
+ * Clase que define la estructura y métodos de la entidad Jugador.
+ * @author Selene
+ * @version 1.0
+ */
 @Entity
 @Table(name = "jugador")
 public class Jugador extends Entidad {

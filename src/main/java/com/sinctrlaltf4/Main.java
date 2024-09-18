@@ -6,6 +6,7 @@ import com.sinctrlaltf4.model.entity.Jugador;
 import com.sinctrlaltf4.model.entity.OpcionJugada;
 import com.sinctrlaltf4.model.services.repository.GenericRepositoryServiceImpl;
 import com.sinctrlaltf4.model.services.repository.util.JpaUtil;
+import com.sinctrlaltf4.model.services.resolucionjuego.ResolucionJuego;
 
 import java.time.LocalDateTime;
 
@@ -23,19 +24,21 @@ public class Main {
         juego.setJugadorDos(jugadorDos);
         juego.setHoraInicio(LocalDateTime.now().minusMinutes(5));
         juego.setHoraFin(LocalDateTime.now());
-        juego.setGanador(jugadorDos);
 
         Jugada jugadaPrimera = new Jugada();
         jugadaPrimera.setJuego(juego);
         jugadaPrimera.setHoraJugada(LocalDateTime.now());
         jugadaPrimera.setJugador(jugadorUno);
-        jugadaPrimera.setOpcion(OpcionJugada.PIEDRA.toString());
+        jugadaPrimera.setOpcion(OpcionJugada.TIJERA.toString());
 
         Jugada jugadaSegunda = new Jugada();
         jugadaSegunda.setJuego(juego);
         jugadaSegunda.setHoraJugada(LocalDateTime.now());
         jugadaSegunda.setJugador(jugadorDos);
-        jugadaSegunda.setOpcion(OpcionJugada.PAPEL.toString());
+        jugadaSegunda.setOpcion(OpcionJugada.PIEDRA.toString());
+
+        juego.setGanador(ResolucionJuego.resolverJuego(jugadaPrimera, jugadaSegunda).getJugador());
+        System.out.println(juego.getGanador());
 
         jugadaGenericRepositoryService.guardar(jugadaPrimera);
         jugadaGenericRepositoryService.guardar(jugadaSegunda);
