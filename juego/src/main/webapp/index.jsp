@@ -7,7 +7,6 @@
 <title>Index</title>
 </head>
 <body>
-	<h1>Index!!!</h1>
-	<a href="hello">Ir a welcome</a>
+	<a href="Entrar">Ir a pre game</a>
 </body>
 </html>

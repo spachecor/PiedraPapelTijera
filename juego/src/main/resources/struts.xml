@@ -6,8 +6,8 @@
 	<constant name="struts.devMode" value="true"/>
 	
 	<package name="base" extends="struts-default">
-		<action name="hello" class="com.sinctrlaltf4.action.HelloAction">
-			<result>/welcome.jsp</result>
+		<action name="Entrar" class="com.sinctrlaltf4.action.EntrarAction">
+			<result name="success">/pre-game.jsp</result>
 		</action>
 	</package>
 </struts>
