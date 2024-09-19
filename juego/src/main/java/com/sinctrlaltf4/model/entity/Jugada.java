@@ -22,7 +22,7 @@ public class Jugada extends Entidad {
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "id_jugador")
     private Jugador jugador;
-    private String opcion;
+    private Integer opcion;
     @Column(name = "hora_jugada")
     private LocalDateTime horaJugada;
 
@@ -60,11 +60,11 @@ public class Jugada extends Entidad {
         this.jugador = jugador;
     }
 
-    public String getOpcion() {
+    public Integer getOpcion() {
         return opcion;
     }
 
-    public void setOpcion(String opcion) {
+    public void setOpcion(Integer opcion) {
         this.opcion = opcion;
     }
 

@@ -1,6 +1,7 @@
 package com.sinctrlaltf4.model.services.resolucionjuego;
 
 import com.sinctrlaltf4.model.entity.Jugada;
+import com.sinctrlaltf4.model.entity.OpcionJugada;
 
 /**
  * Clase que contiene los métodos necesarios para resolver el juego
@@ -16,45 +17,14 @@ public class ResolucionJuego {
      */
     public static Jugada resolverJuego(Jugada jugadaPrimera, Jugada jugadaSegunda){
         Jugada winner = null;
-        switch(jugadaPrimera.getOpcion()){
-            case "PIEDRA":
-                switch(jugadaSegunda.getOpcion()){
-                    case "PAPEL":
-                        winner = jugadaSegunda;
-                        break;
-                    case "TIJERA":
-                        winner = jugadaPrimera;
-                        break;
-                    default:
-                        winner = null;
-                        break;
-                }
-                break;
-            case "PAPEL":
-                switch(jugadaSegunda.getOpcion()){
-                    case "PIEDRA":
-                        winner = jugadaPrimera;
-                        break;
-                    case "TIJERA":
-                        winner = jugadaSegunda;
-                        break;
-                    default:
-                        winner = null;
-                        break;
-                }
-                break;
-            case "TIJERA":
-                switch(jugadaSegunda.getOpcion()){
-                    case "PIEDRA":
-                        winner = jugadaSegunda;
-                        break;
-                    case "PAPEL":
-                        winner = jugadaPrimera;
-                        break;
-                    default:
-                        winner = null;
-                        break;
-                }
+        if(jugadaPrimera.getOpcion().equals(jugadaSegunda.getOpcion())) {
+        	winner=null;//empate
+        }else if(jugadaPrimera.getOpcion().equals(OpcionJugada.PIEDRA.getOpcion())&&jugadaSegunda.getOpcion().equals(OpcionJugada.TIJERA.getOpcion())
+        		||jugadaPrimera.getOpcion().equals(OpcionJugada.PAPEL.getOpcion())&&jugadaSegunda.getOpcion().equals(OpcionJugada.PIEDRA.getOpcion())
+        		||jugadaPrimera.getOpcion().equals(OpcionJugada.TIJERA.getOpcion())&&jugadaSegunda.getOpcion().equals(OpcionJugada.PAPEL.getOpcion())) {
+        	winner=jugadaPrimera;//gana jugador jugada primera
+        }else {
+        	winner=jugadaSegunda;//gana jugador jugada segunda
         }
         return winner;
     }
