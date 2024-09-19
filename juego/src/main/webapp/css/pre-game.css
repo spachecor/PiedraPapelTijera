@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.contenedor-filas{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.fila-jugador{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+form button {
+    width: 100px;
+}
+
+.columna2 button {
+    width: 100px;
+}

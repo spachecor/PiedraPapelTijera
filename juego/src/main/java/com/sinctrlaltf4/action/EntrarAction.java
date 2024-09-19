@@ -2,23 +2,28 @@ package com.sinctrlaltf4.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
+
 public class EntrarAction extends ActionSupport{
 	private static final long serialVersionUID = 1L;
 	
-	private String name;
+	private String accion;
 	
 	@Override
 	public String execute() throws Exception {
-		// TODO Auto-generated method stub
+		HttpServletRequest request = ServletActionContext.getRequest();
+		this.setAccion(request.getParameter("accion"));
 		return SUCCESS;
 	}
 
-	public String getName() {
-		return name;
+	public String getAccion() {
+		return accion;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setAccion(String accion) {
+		this.accion = accion;
 	}
-
+	
 }

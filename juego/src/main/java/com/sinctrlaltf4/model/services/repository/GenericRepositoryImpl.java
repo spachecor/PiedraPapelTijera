@@ -10,7 +10,7 @@ import java.util.List;
  * Sus métodos se usarán a través del servicio correspondiente y no directamente.
  * @param <T> entidad que herede de Entidad
  * @see GenericRepositoryServiceImpl
- * @author Selene
+ * @author Juan-Cumpli-Manuel-Selene
  * @version 1.0
  */
 public class GenericRepositoryImpl<T extends Entidad> implements CRUDRepository<T> {

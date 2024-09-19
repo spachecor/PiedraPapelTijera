@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 /**
  * Clase que define la estructura y métodos de la entidad Jugada.
- * @author Selene
+ * @author Juan-Cumpli-Manuel-Selene
  * @version 1.0
  */
 @Entity

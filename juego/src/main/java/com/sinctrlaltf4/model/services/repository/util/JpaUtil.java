@@ -13,7 +13,7 @@ import java.sql.Statement;
 
 /**
  * Clase que se encarga de gestionar la persistencia en la base de datos.
- * @author Selene
+ * @author Juan-Cumpli-Manuel-Selene
  * @version 1.0
  */
 public class JpaUtil {

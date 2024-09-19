@@ -11,7 +11,7 @@ import java.util.Optional;
  * Hace uso del repositorio para el acceso.
  * @param <T> entidad que herede de Entidad
  * @see GenericRepositoryImpl
- * @author Selene
+ * @author Juan-Cumpli-Manuel-Selene
  * @version 1.0
  */
 public class GenericRepositoryServiceImpl<T extends Entidad> implements CRUDRepositoryService<T> {
