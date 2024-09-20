@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.vidas{
+    margin-top: 75px;
+    display: flex;
+    flex-direction: column;
+}
+.nombres{
+    display: flex;
+    justify-content: space-between;
+}
+.barra-vida{
+    display: flex;
+    align-items: center;
+}
+.tiempo{
+    display: flex;
+    justify-content: center;
+}
+.juego{
+    margin-bottom: 75px;
+    display: flex;
+    align-items: end;
+}
+.botones{
+    display: flex;
+    flex-direction: column;
+    margin: 0 200px;
+}
+.jugador{
+    margin: 0 100px
+}

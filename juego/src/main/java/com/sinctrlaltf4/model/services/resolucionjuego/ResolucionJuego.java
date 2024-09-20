@@ -5,7 +5,7 @@ import com.sinctrlaltf4.model.entity.OpcionJugada;
 
 /**
  * Clase que contiene los métodos necesarios para resolver el juego
- * @author Juan-Cumpli-Manuel-Selene
+ * @author SinCtrlAltF4
  * @version 1.0
  */
 public class ResolucionJuego {

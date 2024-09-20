@@ -11,7 +11,7 @@ import java.util.Optional;
  * @param <T> entidad que herede de Entidad
  * @see CRUDRepository
  * @see GenericRepositoryImpl
- * @author Juan-Cumpli-Manuel-Selene
+ * @author SinCtrlAltF4
  * @version 1.0
  */
 public interface CRUDRepositoryService<T extends Entidad> {

@@ -9,5 +9,9 @@
 		<action name="Entrar" class="com.sinctrlaltf4.action.EntrarAction">
 			<result name="success">/pre-game.jsp</result>
 		</action>
+		<action name="Jugar" class="com.sinctrlaltf4.action.JugarAction">
+			<result name="success">/game.jsp</result>
+			<result name="none">/index.jsp</result>
+		</action>
 	</package>
 </struts>

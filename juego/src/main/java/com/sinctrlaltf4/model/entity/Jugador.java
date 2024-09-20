@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 /**
  * Clase que define la estructura y métodos de la entidad Jugador.
- * @author Juan-Cumpli-Manuel-Selene
+ * @author SinCtrlAltF4
  * @version 1.0
  */
 @Entity

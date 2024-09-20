@@ -9,7 +9,7 @@ import java.util.List;
  * @see CRUDRepositoryService
  * @see GenericRepositoryImpl
  * @param <T> entidad que herede de Entidad
- * @author Juan-Cumpli-Manuel-Selene
+ * @author SinCtrlAltF4
  * @version 1.0
  */
 public interface CRUDRepository <T extends Entidad> {
