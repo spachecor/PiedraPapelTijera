@@ -10,41 +10,50 @@
     <link rel="shortcut icon" href="img/logo.png">
     <!--jquery-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Fuente -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Jacquarda+Bastarda+9&display=swap" rel="stylesheet">
     <!--Estilos y funcionalidad personalizado-->
     <link rel="stylesheet" href="css/game.css">
     <script src="js/game.js" defer></script>
 </head>
 <body>
-	<div class="vidas">
-        <div class="nombres">
-            <p><s:property value="#session.player1"/></p>
-            <p><s:property value="#session.player2"/></p>
-        </div>
-        <div class="barra-vida">
-            <img src="img/barracompleta.PNG" alt="" height="20px">
-            <img src="img/ko.jpg" alt="" width="50px">
-            <img src="img/barracompleta.PNG" alt="" height="20px">
-        </div>
-        <div class="tiempo">
-            <p>00</p>
-        </div>
+    <div class="nombres">
+        <p class="jacquarda-bastarda-9-regular">
+            <b><s:property value="#session.player1" /></b>
+        </p>
+        <p class="jacquarda-bastarda-9-regular">
+            <b><s:property value="#session.player2" /></b>
+        </p>
+    </div>
+    <div class="barra-vida">
+        <img src="img/vida/barra_izq1-4.png" height="30px">
+        <img src="img/vida/ko-inicio.png" width="70px">
+        <img src="img/vida/barra_der1-4.png" height="30px">
+    </div>
+    <div class="tiempo">
+        <img src="img/vida/tiempo.gif" height="15px">
     </div>
     <div class="juego">
-        <div class="botones">
-            <img src="img/gatopuño-gatito.png" alt="Piedra" width="100px">
-            <img src="img/gatopapel.jpg" alt="Papel" width="100px">
-            <img src="img/tijeras.jpg" alt="Tijeras" width="100px">
+        <div class="botones1">
+            <img src="img/botones/piedra-f.png" alt="Piedra" width="75px">
+            <img src="img/botones/papel-f.png" alt="Papel" width="75px">
+            <img src="img/botones/tijeras-f.png" alt="Tijeras" width="75px">
         </div>
-        <div class="jugador">
-            <img src="img/peleaestaticaizda.jpg" alt="" width="250px">
+
+        <div class="botones2">
+            <img src="img/botones/piedra-f-des.png" alt="Piedra" width="75px">
+            <img src="img/botones/papel-f-des.png" alt="Papel" width="75px">
+            <img src="img/botones/tijeras-f-des.png" alt="Tijeras" width="75px">
+
         </div>
-        <div class="jugador">
-            <img src="img/peleaestaticadcha.jpg" alt="" width="250px">
+
+        <div class="jugador1">
+            <img src="img/movimientos/ryu-parado.gif" width="500px">
         </div>
-        <div class="botones">
-            <img src="img/gatopuño-gatito.png" alt="Piedra" width="100px">
-            <img src="img/gatopapel.jpg" alt="Papel" width="100px">
-            <img src="img/tijeras.jpg" alt="Tijeras" width="100px">
+        <div class="jugador2">
+            <img src="img/movimientos/ken-parado.gif" width="500px">
         </div>
     </div>
 </body>
