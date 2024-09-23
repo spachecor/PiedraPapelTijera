@@ -33,20 +33,19 @@
         <img src="img/vida/barra_der1-4.png" height="30px">
     </div>
     <div class="tiempo">
-        <img src="img/vida/tiempo.gif" height="15px">
+        <img src="img/vida/tiempo.gif" id="temporizador" height="30px">
     </div>
     <div class="juego">
         <div class="botones1">
-            <img src="img/botones/piedra-f.png" alt="Piedra" width="75px">
-            <img src="img/botones/papel-f.png" alt="Papel" width="75px">
-            <img src="img/botones/tijeras-f.png" alt="Tijeras" width="75px">
+            <img src="img/botones/piedra-f.png" id="piedra1" alt="Piedra" width="75px">
+            <img src="img/botones/papel-f.png" id="papel1" alt="Papel" width="75px">
+            <img src="img/botones/tijeras-f.png" id="tijera1" alt="Tijeras" width="75px">
         </div>
 
         <div class="botones2">
-            <img src="img/botones/piedra-f-des.png" alt="Piedra" width="75px">
-            <img src="img/botones/papel-f-des.png" alt="Papel" width="75px">
-            <img src="img/botones/tijeras-f-des.png" alt="Tijeras" width="75px">
-
+            <img src="img/botones/piedra-f-des.png" id="piedra2" alt="Piedra" width="75px">
+            <img src="img/botones/papel-f-des.png" id="papel2" alt="Papel" width="75px">
+            <img src="img/botones/tijeras-f-des.png" id="tijera2" alt="Tijeras" width="75px">
         </div>
 
         <div class="jugador1">
