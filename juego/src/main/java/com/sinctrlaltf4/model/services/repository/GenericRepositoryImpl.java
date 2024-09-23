@@ -34,8 +34,11 @@ public class GenericRepositoryImpl<T extends Entidad> implements CRUDRepository<
 
     @Override
     public void guardar(T t) {
-        if(t.getId()!=null&&t.getId()>0&&porId(t.getId())!=null) em.merge(t);
-        else em.persist(t);
+        if (t.getId() != null && t.getId() > 0) {
+            em.merge(t);
+        } else {
+            em.persist(t);
+        }
     }
 
     @Override

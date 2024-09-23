@@ -16,17 +16,15 @@ public class Juego extends Entidad{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_juego")
     private Integer id;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "id_jugador_uno")
     private Jugador jugadorUno;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "id_jugador_dos")
     private Jugador jugadorDos;
-    @Column(name = "hora_inicio")
-    private LocalDateTime horaInicio;
-    @Column(name = "hora_fin")
-    private LocalDateTime horaFin;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @Column(name = "hora")
+    private LocalDateTime hora;
+    @ManyToOne
     @JoinColumn(name = "id_ganador")
     private Jugador ganador;
 
@@ -43,8 +41,7 @@ public class Juego extends Entidad{
                 "id=" + id +
                 ", jugadorUno=" + jugadorUno +
                 ", jugadorDos=" + jugadorDos +
-                ", horaInicio=" + horaInicio +
-                ", horaFin=" + horaFin +
+                ", hora=" + hora +
                 ", ganador=" + ganador +
                 '}';
     }
@@ -65,23 +62,15 @@ public class Juego extends Entidad{
         this.jugadorDos = jugadorDos;
     }
 
-    public LocalDateTime getHoraInicio() {
-        return horaInicio;
-    }
+    public LocalDateTime getHora() {
+		return hora;
+	}
 
-    public void setHoraInicio(LocalDateTime horaInicio) {
-        this.horaInicio = horaInicio;
-    }
+	public void setHora(LocalDateTime hora) {
+		this.hora = hora;
+	}
 
-    public LocalDateTime getHoraFin() {
-        return horaFin;
-    }
-
-    public void setHoraFin(LocalDateTime horaFin) {
-        this.horaFin = horaFin;
-    }
-
-    public Jugador getGanador() {
+	public Jugador getGanador() {
         return ganador;
     }
 

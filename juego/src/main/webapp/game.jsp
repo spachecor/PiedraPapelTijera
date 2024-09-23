@@ -20,17 +20,13 @@
 </head>
 <body>
     <div class="nombres">
-        <p class="jacquarda-bastarda-9-regular">
-            <b><s:property value="#session.player1" /></b>
-        </p>
-        <p class="jacquarda-bastarda-9-regular">
-            <b><s:property value="#session.player2" /></b>
-        </p>
+        <p class="jacquarda-bastarda-9-regular"><b><s:property value="#session.player1" /></b></p>
+        <p class="jacquarda-bastarda-9-regular" id="nombrePlayer2"><b><s:property value="#session.player2" /></b></p>
     </div>
     <div class="barra-vida">
-        <img src="img/vida/barra_izq1-4.png" height="30px">
+        <img src="img/vida/barra_izq1-4.png" height="30px" id="vidaIzq">
         <img src="img/vida/ko-inicio.png" width="70px">
-        <img src="img/vida/barra_der1-4.png" height="30px">
+        <img src="img/vida/barra_der1-4.png" height="30px" id="vidaDcha">
     </div>
     <div class="tiempo">
         <img src="img/vida/tiempo.gif" id="temporizador" height="30px">
@@ -49,11 +45,13 @@
         </div>
 
         <div class="jugador1">
-            <img src="img/movimientos/ryu-parado.gif" width="500px">
+            <img src="img/movimientos/ryu-parado.gif" width="500px" id="imgPlayer1">
         </div>
         <div class="jugador2">
-            <img src="img/movimientos/ken-parado.gif" width="500px">
+            <img src="img/movimientos/ken-parado.gif" width="500px" id="imgPlayer2">
         </div>
     </div>
+    <input type="hidden" id="vidasplayer1" name="vidasplayer1" value="<s:property value="#session.vidasplayer1"/>"/>
+    <input type="hidden" id="vidasplayer2" name="vidasplayer2" value="<s:property value="#session.vidasplayer2"/>"/>
 </body>
 </html>

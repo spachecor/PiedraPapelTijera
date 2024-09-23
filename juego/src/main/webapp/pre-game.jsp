@@ -25,24 +25,24 @@
         <form action="Jugar" method="post" id="nombreJugadoresForm">
             <div class="contenedor-filas">
                 <div class="fila-jugador">
-                    <img src="img/gatito1.jpg" alt="player1" width="250px">
+                    <img src="img/personajes/ryu-win.png" alt="player1" width="250px">
                     <input type="text" name="player1" id="player1">
                 </div>
                 <div class="fila">
-                    <img src="img/versus.jpg" alt="versus" width="250px">
+                    <img src="img/personajes/vs.png" alt="versus" width="250px">
                 </div>
                 <div class="fila-jugador">
-                    <img src="img/gatito2.jpg" alt="player2" width="250px">
+                    <img src="img/personajes/ken-win.png" alt="player2" width="250px">
                     <input type="text" name="player2" id="player2">
                 </div>
             </div>
-            <button>¡¡Jugar!!</button>
+            <button class="botones"><img src="img/botones/jugar.png" alt="Piedra" width="100px"></button>
         </form>
     </div>
     <div class="columna2">
         <form action="Jugar" method="post">
         	<input type="hidden" name="accion" value="salir"/>
-        	<button>Salir</button>
+        	<button class="botones"><img src="img/botones/salir.png" alt="Piedra" width="100px"></button>
         </form>
     </div>
     <input type="hidden" id="opcionJuego" name="opcionJuego" value="<s:property value="#session.opcionJuego"/>"/>

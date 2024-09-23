@@ -16,15 +16,13 @@ public class Jugada extends Entidad {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_jugada")
     private Integer id;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "id_juego")
     private Juego juego;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "id_jugador")
     private Jugador jugador;
     private Integer opcion;
-    @Column(name = "hora_jugada")
-    private LocalDateTime horaJugada;
 
     public Jugada() {}
 
@@ -40,7 +38,6 @@ public class Jugada extends Entidad {
                 ", juego=" + juego +
                 ", jugador=" + jugador +
                 ", opcion='" + opcion + '\'' +
-                ", horaJugada=" + horaJugada +
                 '}';
     }
 
@@ -66,13 +63,5 @@ public class Jugada extends Entidad {
 
     public void setOpcion(Integer opcion) {
         this.opcion = opcion;
-    }
-
-    public LocalDateTime getHoraJugada() {
-        return horaJugada;
-    }
-
-    public void setHoraJugada(LocalDateTime horaJugada) {
-        this.horaJugada = horaJugada;
     }
 }

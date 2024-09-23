@@ -1,6 +1,5 @@
 package com.sinctrlaltf4.model.services.repository.util;
 
-import com.sinctrlaltf4.model.services.properties.LectorProperties;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -31,9 +30,8 @@ public class JpaUtil {
      * @return El EntityManagerFactory de la app
      */
     private static EntityManagerFactory buildEntityManagerFactory() throws IOException {
-        LectorProperties lectorProperties = new LectorProperties();
-        JpaUtil.crearBaseDeDatos(lectorProperties.leerPropiedad("url"), lectorProperties.leerPropiedad("user")
-                , lectorProperties.leerPropiedad("password"), lectorProperties.leerPropiedad("dbName"));
+        JpaUtil.crearBaseDeDatos("jdbc:mysql://localhost:3306/", "root"
+                , "", "juego");
         return Persistence.createEntityManagerFactory("Juego");
     }
 
@@ -45,11 +43,15 @@ public class JpaUtil {
      * @param dbName El nombre de la base de datos
      */
     private static void crearBaseDeDatos(String url, String user, String password, String dbName){
-        try (Connection conn = DriverManager.getConnection(url, user, password);
-             Statement stmt = conn.createStatement()) {
-            String sql = "CREATE DATABASE IF NOT EXISTS " + dbName;
-            stmt.executeUpdate(sql);
-        } catch (SQLException e) {
+        try {
+            //registramos manualmente el driver de MySQL
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            try (Connection conn = DriverManager.getConnection(url, user, password);
+                 Statement stmt = conn.createStatement()) {
+                String sql = "CREATE DATABASE IF NOT EXISTS " + dbName;
+                stmt.executeUpdate(sql);
+            }
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }

@@ -19,23 +19,23 @@
 </head>
 <body>
 	<div class="logo">
-		<img src="img/gato.jpg" alt="logo de street figther">
+		<img src="img/logo/logo.png" alt="logo de street figther" width="500px">
     </div>
     <div class="opciones">
         <!--boton de 1vsmachine-->
         <form action="Entrar" method="post">
             <input type="hidden" name="accion" value="1vsMachine"/>
-            <button>1vsMachine</button>
+            <button class="botones"><img src="img/botones/1vscom.png" alt="Piedra" width="200px"></button>
         </form>
         <!--boton de 1vs1-->
         <form action="Entrar" method="post">
             <input type="hidden" name="accion" value="1vs1"/>
-            <button>1vs1</button>
+            <button class="botones"><img src="img/botones/1vs2.png" alt="Piedra" width="200px"></button>
         </form>
     </div>
     <div class="final">
-        <button id="salir">Salir</button>
-        <button id="creditos">Creditos</button>
+        <button class="botones2" id="salir"><img src="img/botones/salir.png" alt="Piedra" width="75px"></button>
+        <button class="botones3" id="creditos"><img src="img/botones/creditos.png" alt="Piedra" width="75px"></button>
     </div>
 </body>
 </html>

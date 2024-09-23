@@ -14,11 +14,11 @@
 			<result name="none">/index.jsp</result>
 		</action>
 		<action name="Juego" class="com.sinctrlaltf4.action.JuegoAction">
-			<result name="success">/final.jsp</result>
+			<result name="input">/final.jsp</result>
 		</action>
 		<action name="Final" class="com.sinctrlaltf4.action.FinalAction">
 			<result name="success">/pre-game.jsp</result>
-			<result name="none">/index.jsp</result>
+			<result name="none">/final.jsp</result>
 		</action>
 	</package>
 </struts>

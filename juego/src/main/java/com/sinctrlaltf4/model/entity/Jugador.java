@@ -15,8 +15,11 @@ public class Jugador extends Entidad {
     @Column(name = "id_jugador")
     private Integer id;
     private String nombre;
+    private Integer vidas;
 
-    public Jugador() {}
+    public Jugador() {
+    	this.vidas = 3;
+    }
 
     @Override
     public Integer getId() {
@@ -28,6 +31,7 @@ public class Jugador extends Entidad {
         return "Jugador{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
+                ", vidas='" + vidas + '\'' +
                 '}';
     }
 
@@ -38,4 +42,12 @@ public class Jugador extends Entidad {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+	public Integer getVidas() {
+		return vidas;
+	}
+
+	public void setVidas(Integer vidas) {
+		this.vidas = vidas;
+	}
 }
