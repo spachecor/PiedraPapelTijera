@@ -1,7 +1,4 @@
 $(document).ready(function(){
-	//Ajustar el alto al alto de la pantalla
-	let height = $(window).height();
-	$('body').css('height', height);
 	if($('#ganador').val()=="player1"){
 		//gana player1
 		$('#player1').attr('src', 'img/personajes/ryu-win.png');

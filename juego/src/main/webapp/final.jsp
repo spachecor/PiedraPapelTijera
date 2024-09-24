@@ -11,6 +11,7 @@
     <!--jquery-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <!-- Estilos y funcionalidad personalizada -->
+    <link rel="stylesheet" href="css/globals.css">
     <link rel="stylesheet" href="css/final.css">
     <script src="js/final.js" defer></script>
 </head>

@@ -17,12 +17,9 @@ let aux = 0;
 let auxOpcion = null;
 let auxPrimerTurno = true;
 let aniadido = false;
+const esMaquina = $('#nombrePlayer2').text() === 'Machine';
 
 $(document).ready(function(){
-    // Ajustar el alto al alto de la pantalla
-    let height = $(window).height();
-    $('body').css('height', height);
-
 	// El fondo será aleatorio
 	let srcFondo = fondos.get(Math.floor(Math.random() * 10) + 1); // Ajuste para incluir el 10
 	$('body').css('background-image', 'url(' + srcFondo + ')');
@@ -65,6 +62,9 @@ function comprobarOpcionElegida(){
 	let intervalo = setInterval(function(){
 		// Si se añadió una opción, la registramos y continuamos con el flujo
 		if(aniadido){
+			if (esMaquina) {
+				$(document).off('keydown');
+			}
 			aniadido = false;
 			opciones.push(auxOpcion);
 			auxOpcion = null;
@@ -72,21 +72,23 @@ function comprobarOpcionElegida(){
 			opciones.forEach(function(opcion){
 				console.log(opcion);
 			});
+			aux=0;
 			finTurno();
 		// Si no se añadió nada, se asigna un valor aleatorio después del tiempo límite
-		} else if (aux === 30 || (!auxPrimerTurno && aux === 3 && $('#nombrePlayer2').val() === "Machine")) {
-			console.log("terminado turno");
+		} else if (aux === 30 || (!auxPrimerTurno && aux === 10 && esMaquina)) {
 			// Si no se ha asignado ninguna opción, se asigna una opción aleatoria (0, 1 o 2)
 			if(auxOpcion === null) {
 				auxOpcion = Math.floor(Math.random() * 3);
 				opciones.push(auxOpcion);
 				console.log("Opción asignada aleatoriamente: " + auxOpcion);
 				auxOpcion = null;
+				aniadido = false;
 			}
 			clearInterval(intervalo);
 			opciones.forEach(function(opcion){
 				console.log(opcion);
 			});
+			aux=0;
 			finTurno();
 		}
 		aux++;
@@ -104,6 +106,8 @@ function finTurno(){
 		$('#tijera2').attr('src', 'img/botones/tijeras-f.png');
 		
 		$('#temporizador').attr('src', 'img/vida/tiempo.gif');
+		// La 1º vez que entramos, ponemos 1º turno a false, para que se sepa que ya se ha realizado la tirada del primer turno
+		if(auxPrimerTurno) auxPrimerTurno = false;
 		// Una vez cambiados los estilos, llamamos a volver a elegir opción
 		comprobarOpcionElegida();
 	} else {
@@ -114,9 +118,6 @@ function finTurno(){
 		console.log("opcion player1: " + opciones[0] + " player2: " + opciones[1]);
 		resolverJuego();
 	}
-
-	// La 1º vez que entramos, ponemos 1º turno a false, para que se sepa que ya se ha realizado la tirada del primer turno
-	if(auxPrimerTurno) auxPrimerTurno = false;
 }
 
 function resolverJuego(){

@@ -15,6 +15,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Jacquarda+Bastarda+9&display=swap" rel="stylesheet">
     <!--Estilos y funcionalidad personalizado-->
+    <link rel="stylesheet" href="css/globals.css">
     <link rel="stylesheet" href="css/game.css">
     <script src="js/game.js" defer></script>
 </head>

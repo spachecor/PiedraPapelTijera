@@ -4,11 +4,13 @@
 }
 body{
 	background-color: darkblue;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
+
+body,
+body.swal2-height-auto {
+	height: 100dvh !important;
+}
+
 form{
     display: flex;
     flex-direction: column;

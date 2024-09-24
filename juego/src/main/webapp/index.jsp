@@ -14,6 +14,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark/dark.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
     <!-- Estilos y funcionalidad personalizada -->
+    <link rel="stylesheet" href="css/globals.css">
     <link rel="stylesheet" href="css/index.css">
     <script src="js/index.js" defer></script>
 </head>
