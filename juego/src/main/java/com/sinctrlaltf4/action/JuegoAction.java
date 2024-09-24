@@ -37,8 +37,16 @@ public class JuegoAction extends ActionSupport{
 		HttpServletResponse response = ServletActionContext.getResponse();
 		Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).create();
 		String accion = request.getParameter("accion");
-		if(accion.equals("jugada")) {	
-			String jugadaGson = gson.toJson(GestionJuegoUtil.resolverJugada(request));
+		if(accion.equals("jugada")) {
+			Jugada jugada = null;
+			try {
+				jugada = GestionJuegoUtil.resolverJugada(request);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			String jugadaGson = null;
+			if(jugada==null)jugadaGson="null";
+			else jugadaGson = gson.toJson(jugada);
 			response.getWriter().write(jugadaGson);
 			response.flushBuffer();
 			return null;

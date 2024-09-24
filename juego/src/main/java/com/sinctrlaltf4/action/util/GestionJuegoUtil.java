@@ -60,10 +60,13 @@ public class GestionJuegoUtil {
 		jugadaPlayer2.setOpcion(opcionPlayer2);
 		//resolvemos juego
 		Jugada winner = ResolucionJuego.resolverJuego(jugadaPlayer1, jugadaPlayer2);
-		juego.setGanador(winner.getJugador());
-		//ajustamos las vidas de los jugadores
-		if(winner.getJugador().equals(player1))player2.setVidas(player2.getVidas()-1);
-		else player1.setVidas(player1.getVidas()-1);
+		if(winner!=null) {
+			juego.setGanador(winner.getJugador());
+			//ajustamos las vidas de los jugadores
+			if(winner.getJugador().equals(player1))player2.setVidas(player2.getVidas()-1);
+			else player1.setVidas(player1.getVidas()-1);
+		}
+		
 		//persistimos las jugadas
 		juegoGenericRepositoryServiceImpl.guardar(juego);
 		jugadaGenericRepositoryServiceImpl.guardar(jugadaPlayer1);

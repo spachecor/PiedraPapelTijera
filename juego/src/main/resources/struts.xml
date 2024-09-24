@@ -17,8 +17,9 @@
 			<result name="input">/final.jsp</result>
 		</action>
 		<action name="Final" class="com.sinctrlaltf4.action.FinalAction">
-			<result name="success">/pre-game.jsp</result>
+			<result name="input">/pre-game.jsp</result>
 			<result name="none">/final.jsp</result>
+			<result name="success">/index.jsp</result>
 		</action>
 	</package>
 </struts>

@@ -1,9 +1,16 @@
 $(document).ready(function(){
-	if($('#nombreGanador').val()=="player1"){
-		$('#player1').attr('src', 'img/personajes/ryu-win.png')
-		$('#player2').attr('src', 'img/personajes/ken-lose.png')
+	//Ajustar el alto al alto de la pantalla
+	let height = $(window).height();
+	$('body').css('height', height);
+	if($('#ganador').val()=="player1"){
+		//gana player1
+		$('#player1').attr('src', 'img/personajes/ryu-win.png');
+		$('#player2').attr('src', 'img/personajes/ken-lose.png');
+		$('#resultado').attr('src', 'img/personajes/win-los-1.png');
 	}else{
-		$('#player1').attr('src', 'img/personajes/ryu-lose.png')
-		$('#player2').attr('src', 'img/personajes/ken-win.png')
+		//gana player2
+		$('#player1').attr('src', 'img/personajes/ryu-lose.png');
+		$('#player2').attr('src', 'img/personajes/ken-win.png');
+		$('#resultado').attr('src', 'img/personajes/win-los-2.png');
 	}
 });
