@@ -19,6 +19,7 @@
     <script src="js/index.js" defer></script>
 </head>
 <body>
+	<button id="boton-audio"><img src="img/botones/musica.png" alt="Piedra" width="100px"></button>
 	<div class="logo">
 		<img src="img/logo/logo.png" alt="logo de street figther" width="500px">
     </div>
@@ -35,8 +36,8 @@
         </form>
     </div>
     <div class="final">
-        <button class="botones2" id="salir"><img src="img/botones/salir.png" alt="Piedra" width="75px"></button>
-        <button class="botones3" id="creditos"><img src="img/botones/creditos.png" alt="Piedra" width="75px"></button>
+        <button class="botones2 botones" id="salir"><img src="img/botones/salir.png" alt="Piedra" width="75px"></button>
+        <button class="botones3 botones" id="creditos"><img src="img/botones/creditos.png" alt="Piedra" width="75px"></button>
     </div>
 </body>
 </html>

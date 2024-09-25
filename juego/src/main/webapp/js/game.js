@@ -20,6 +20,21 @@ let aniadido = false;
 const esMaquina = $('#nombrePlayer2').text() === 'Machine';
 
 $(document).ready(function(){
+	//audio de la pg
+	let audioEncendido = false;
+	const audio = $('<audio></audio>');
+	audio.attr('src', 'audio/pantalla3.mp3');
+	audio.attr('loop', 'loop');
+	$('body').append(audio);
+	$('#boton-audio').click(function(){
+		if(!audioEncendido){
+			audio[0].play();
+			audioEncendido=true;
+		}else{
+			audio[0].pause();
+			audioEncendido=false;
+		}
+	});
 	// El fondo será aleatorio
 	let srcFondo = fondos.get(Math.floor(Math.random() * 10) + 1); // Ajuste para incluir el 10
 	$('body').css('background-image', 'url(' + srcFondo + ')');
@@ -69,25 +84,18 @@ function comprobarOpcionElegida(){
 			opciones.push(auxOpcion);
 			auxOpcion = null;
 			clearInterval(intervalo);
-			opciones.forEach(function(opcion){
-				console.log(opcion);
-			});
 			aux=0;
 			finTurno();
 		// Si no se añadió nada, se asigna un valor aleatorio después del tiempo límite
-		} else if (aux === 30 || (!auxPrimerTurno && aux === 10 && esMaquina)) {
+		} else if (aux === 30 || (!auxPrimerTurno && aux === 4 && esMaquina)) {
 			// Si no se ha asignado ninguna opción, se asigna una opción aleatoria (0, 1 o 2)
 			if(auxOpcion === null) {
 				auxOpcion = Math.floor(Math.random() * 3);
 				opciones.push(auxOpcion);
-				console.log("Opción asignada aleatoriamente: " + auxOpcion);
 				auxOpcion = null;
 				aniadido = false;
 			}
 			clearInterval(intervalo);
-			opciones.forEach(function(opcion){
-				console.log(opcion);
-			});
 			aux=0;
 			finTurno();
 		}
@@ -115,7 +123,6 @@ function finTurno(){
 		$('#papel2').attr('src', 'img/botones/papel-f-des.png');
 		$('#tijera2').attr('src', 'img/botones/tijeras-f-des.png');
 		$('#temporizador').attr('src', 'img/vida/tiempoFin.png');
-		console.log("opcion player1: " + opciones[0] + " player2: " + opciones[1]);
 		resolverJuego();
 	}
 }

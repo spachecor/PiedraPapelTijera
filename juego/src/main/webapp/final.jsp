@@ -16,6 +16,7 @@
     <script src="js/final.js" defer></script>
 </head>
 <body>
+	<button id="boton-audio"><img src="img/botones/musica.png" alt="Piedra" width="100px"></button>
     <div class="columna1">
 		<div class="contenedor-filas">
 			<div class="fila-jugador">

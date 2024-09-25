@@ -20,6 +20,7 @@
     <script src="js/game.js" defer></script>
 </head>
 <body>
+	<button id="boton-audio"><img src="img/botones/musica.png" alt="Piedra" width="100px"></button>
     <div class="nombres">
         <p class="jacquarda-bastarda-9-regular"><b><s:property value="#session.player1" /></b></p>
         <p class="jacquarda-bastarda-9-regular" id="nombrePlayer2"><b><s:property value="#session.player2" /></b></p>
