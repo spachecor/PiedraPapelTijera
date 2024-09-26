@@ -28,7 +28,7 @@ body{
     margin: 0 0px;
     position: absolute;
     top: 90%;
-    left: 2%;
+    left: 0.5%;
     transform: translate(-50%, -50%);
     width: 0px;
     height: auto;
@@ -49,4 +49,14 @@ body{
     transform: translate(-50%, -50%); 
     width: 50px; 
     height: auto; 
+}
+#botonHistorial{
+	position: fixed;
+	top: 10px;
+	left: 10px;
+	cursor: pointer;
+    padding: 0;
+    background: none;
+    margin: 0 0px;
+    border: none;
 }

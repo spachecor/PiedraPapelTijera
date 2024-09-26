@@ -20,6 +20,10 @@
 </head>
 <body>
 	<button id="boton-audio"><img src="img/botones/musica.png" alt="Piedra" width="100px"></button>
+	<form action="Historial" method="post">
+		<input type="hidden" name="accion" value="historial"/>
+		<button id="botonHistorial"><img src="img/history/histor.png" alt="Piedra" width="100px"></button>
+	</form>
 	<div class="logo">
 		<img src="img/logo/logo.png" alt="logo de street figther" width="500px">
     </div>

@@ -25,5 +25,9 @@
 			<result name="input">/creditos.jsp</result>
 			<result name="none">/index.jsp</result>
 		</action>
+		<action name="Historial" class="com.sinctrlaltf4.action.HistorialAction">
+			<result name="input">/historial.jsp</result>
+			<result name="none">/index.jsp</result>
+		</action>
 	</package>
 </struts>
