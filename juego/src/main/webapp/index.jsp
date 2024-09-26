@@ -36,8 +36,10 @@
         </form>
     </div>
     <div class="final">
-        <button class="botones2 botones" id="salir"><img src="img/botones/salir.png" alt="Piedra" width="75px"></button>
-        <button class="botones3 botones" id="creditos"><img src="img/botones/creditos.png" alt="Piedra" width="75px"></button>
+        <button class="botones2 botones" id="salir"><img src="img/botones/salir.png" alt="Piedra" width="100px"></button>
+        <form action="Creditos" method="post">
+        	<button class="botones3 botones" id="creditos"><img src="img/botones/creditos.png" alt="Piedra" width="100px"></button>
+        </form>
     </div>
 </body>
 </html>

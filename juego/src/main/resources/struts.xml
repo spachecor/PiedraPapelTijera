@@ -21,5 +21,9 @@
 			<result name="none">/final.jsp</result>
 			<result name="success">/index.jsp</result>
 		</action>
+		<action name="Creditos" class="com.sinctrlaltf4.action.CreditosAction">
+			<result name="input">/creditos.jsp</result>
+			<result name="none">/index.jsp</result>
+		</action>
 	</package>
 </struts>
