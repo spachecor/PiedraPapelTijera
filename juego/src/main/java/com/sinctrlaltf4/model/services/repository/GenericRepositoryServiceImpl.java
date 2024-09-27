@@ -42,7 +42,6 @@ public class GenericRepositoryServiceImpl<T extends Entidad> implements CRUDRepo
         }catch (Exception e){
             em.getTransaction().rollback();
             e.printStackTrace();
-            //TODO agregar logger
         }
     }
 
@@ -55,7 +54,6 @@ public class GenericRepositoryServiceImpl<T extends Entidad> implements CRUDRepo
         }catch (Exception e){
             em.getTransaction().rollback();
             e.printStackTrace();
-            //TODO agregar logger
         }
     }
 }

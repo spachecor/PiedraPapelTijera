@@ -11,6 +11,7 @@ public class GestionHistorialUtil {
 	private static GenericRepositoryServiceImpl<Juego> juegoGenericRepositoryServiceImpl = new GenericRepositoryServiceImpl<>(JpaUtil.getEntityManager(), Juego.class);
 	public static List<Juego> obtenerTresUltimosJugadores() {
 		List<Juego> juegos = juegoGenericRepositoryServiceImpl.listar();
+		System.out.println(juegos);
         juegos.sort(Comparator.comparing(Juego::getHora).reversed());
         return juegos.subList(0, Math.min(3, juegos.size()));
 	}

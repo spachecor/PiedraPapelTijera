@@ -8,10 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SinCtrlAltF4</title>
     <link rel="shortcut icon" href="img/logo.png">
-    <!--jquery-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <!-- Estilos y funcionalidad personalizada -->
-    <link rel="stylesheet" href="css/globals.css">
+    <s:include value="includes/includes.jsp"/>
     <link rel="stylesheet" href="css/final.css">
     <script src="js/final.js" defer></script>
 </head>
@@ -33,7 +31,7 @@
     <div class="columna2">
         <form action="Final" method="post">
         	<input type="hidden" name="accion" value="jugar"/>
-        	<button class="botones"><img src="img/botones/jugar.png" alt="Piedra" width="100px"></button>
+        	<button class="botones"><img src="img/botones/nuevojuego.png" alt="Piedra" width="100px"></button>
         </form>
         <form action="Final" method="post">
         	<input type="hidden" name="accion" value="salir"/>

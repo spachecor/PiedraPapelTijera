@@ -26,6 +26,7 @@ $(document).ready(function(){
 	audio.attr('src', 'audio/pantalla3.mp3');
 	audio.attr('loop', 'loop');
 	$('body').append(audio);
+	audio[0].play();
 	$('#boton-audio').click(function(){
 		if(!audioEncendido){
 			audio[0].play();

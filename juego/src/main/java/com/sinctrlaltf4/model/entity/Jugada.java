@@ -2,8 +2,6 @@ package com.sinctrlaltf4.model.entity;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
-
 /**
  * Clase que define la estructura y métodos de la entidad Jugada.
  * @author SinCtrlAltF4

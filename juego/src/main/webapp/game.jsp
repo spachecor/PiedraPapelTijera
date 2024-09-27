@@ -8,14 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>¡Piedra, Papel o Tijera!</title>
     <link rel="shortcut icon" href="img/logo.png">
-    <!--jquery-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <!-- Fuente -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Jacquarda+Bastarda+9&display=swap" rel="stylesheet">
     <!--Estilos y funcionalidad personalizado-->
-    <link rel="stylesheet" href="css/globals.css">
+    <s:include value="includes/includes.jsp"/>
     <link rel="stylesheet" href="css/game.css">
     <script src="js/game.js" defer></script>
 </head>
