@@ -14,6 +14,8 @@
     <script src="js/historial.js" defer></script>
 </head>
 <body>
+	<audio id="musica" src="audio/creditos.mp3" loop></audio>
+	<button id="boton-audio"><img src="img/botones/musica.png" alt="Piedra" width="100px"></button>
 	<form action="Historial" method="post">
 		<input type="hidden" name="accion" value="salir"/>
 		<button class="botones2 botones" id="salir"><img src="img/botones/salir.png" alt="Piedra" width="100px"></button>

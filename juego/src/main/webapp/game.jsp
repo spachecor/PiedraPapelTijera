@@ -14,6 +14,7 @@
     <script src="js/game.js" defer></script>
 </head>
 <body>
+	<audio id="musica" src="audio/pantalla3.mp3" loop></audio>
 	<button id="boton-audio"><img src="img/botones/musica.png" alt="Piedra" width="100px"></button>
     <div class="nombres">
         <p class="jacquarda-bastarda-9-regular"><b><s:property value="#session.player1" /></b></p>

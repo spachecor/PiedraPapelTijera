@@ -1,19 +1,6 @@
 $(document).ready(function(){
 	//audio de la pg
-	let audioEncendido = false;
-	const audio = $('<audio></audio>');
-	audio.attr('src', 'audio/pantalla1.mp3');
-	audio.attr('loop', 'loop');
-	$('body').append(audio);
-	$('#boton-audio').click(function(){
-		if(!audioEncendido){
-			audio[0].play();
-			audioEncendido=true;
-		}else{
-			audio[0].pause();
-			audioEncendido=false;
-		}
-	});
+	cargaAudio();
 //cerrar ventana al salir
 	$('#salir').click(function(){
 		Swal.fire({
@@ -25,3 +12,12 @@ $(document).ready(function(){
 		});
 	});
 });
+function cargaAudio() {
+	let audioEncendido = true;
+	const musica = $('#musica')[0];
+	musica.play();
+	$('#boton-audio').click(function(){
+		audioEncendido ? musica.pause() : musica.play();
+		audioEncendido = !audioEncendido;
+	});
+}

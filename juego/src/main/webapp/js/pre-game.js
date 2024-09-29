@@ -1,21 +1,7 @@
+let audioEncendido = true;
 $(document).ready(function(){
-	
 	//audio de la pg
-	let audioEncendido = false;
-	const audio = $('<audio></audio>');
-	audio.attr('src', 'audio/pantalla2.mp3');
-	audio.attr('loop', 'loop');
-	$('body').append(audio);
-	$('#boton-audio').click(function(){
-		if(!audioEncendido){
-			audio[0].play();
-			audioEncendido=true;
-		}else{
-			audio[0].pause();
-			audioEncendido=false;
-		}
-	});
-	
+	cargaAudio();	
 	if($('#opcionJuego').val()==="1vsMachine"){
 		$('#player2').attr('disabled', 'true');
 		$('#player2').val("Machine");
@@ -40,3 +26,11 @@ $(document).ready(function(){
 		}
 	});
 });
+function cargaAudio() {
+	const musica = $('#musica')[0];
+	musica.play();
+	$('#boton-audio').click(function(){
+		audioEncendido ? musica.pause() : musica.play();
+		audioEncendido = !audioEncendido;
+	});
+}

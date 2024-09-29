@@ -47,12 +47,12 @@ public class JuegoAction extends ActionSupport{
 			String jugadaGson = null;
 			if(jugada==null)jugadaGson="null";
 			else jugadaGson = gson.toJson(jugada);
+			response.addHeader("Content-Type", "application/json");
 			response.getWriter().write(jugadaGson);
 			response.flushBuffer();
 			return null;
 		}else if(accion.equals("asignarGanador")){
 			request.getSession().setAttribute("ganador", request.getAttribute("nombreGanador"));
-			request.getSession().setAttribute("perdedor", request.getAttribute("nombrePerdedor"));
 		}
 		return INPUT;
 	}

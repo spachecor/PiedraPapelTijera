@@ -1,12 +1,14 @@
 let noData = "NO DATA";
+let audioEncendido = true;
 $(document).ready(function(){
+	cargaAudio();
     $.ajax({
         type: 'GET',
         dataType: 'json',
         url: '/juego/Historial.action?accion=obtenerDatos',
         success: function(data){
 			console.log(data)
-			if(data==null){
+			if(data==null||data.length==0){
 				insertarDatos(noData, noData, noData, noData);
 			}else{
 				data.forEach(function(juego){
@@ -52,4 +54,12 @@ function insertarDatos(player1, player2, time, winner){
 					
 	tr.append(tdPlayer1).append(tdPlayer2).append(tdTime).append(tdWinner);
 	tbody.append(tr);
+}
+function cargaAudio() {
+	const musica = $('#musica')[0];
+	musica.play();
+	$('#boton-audio').click(function(){
+		audioEncendido ? musica.pause() : musica.play();
+		audioEncendido = !audioEncendido;
+	});
 }

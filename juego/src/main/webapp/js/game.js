@@ -1,221 +1,168 @@
 //fondos aleatorios
-let fondos = new Map();
-fondos.set(1, 'img/fondos/1.gif');
-fondos.set(2, 'img/fondos/2.gif');
-fondos.set(3, 'img/fondos/3.gif');
-fondos.set(4, 'img/fondos/4.gif');
-fondos.set(5, 'img/fondos/5.gif');
-fondos.set(6, 'img/fondos/6.gif');
-fondos.set(7, 'img/fondos/7.gif');
-fondos.set(8, 'img/fondos/8.gif');
-fondos.set(9, 'img/fondos/9.gif');
-fondos.set(10, 'img/fondos/10.gif');
+const fondos = {};
+for (let i = 1; i <= 10; i++) {
+	fondos[i] = `img/fondos/${i}.gif`;
+}
 
-//recogemos la opcion del primero
-let opciones = [];
-let aux = 0;
-let auxOpcion = null;
-let auxPrimerTurno = true;
-let aniadido = false;
+const OPCIONES = {
+	PIEDRA: '0',
+	PAPEL: '1',
+	TIJERA: '2'
+};
+
+const JUGADORES = {
+	JUGADOR_1: '-1',
+	EMPATE: '0',
+	JUGADOR_2: '1'
+};
+
 const esMaquina = $('#nombrePlayer2').text() === 'Machine';
+const vidaJugador1Dom = $('#vidaIzq');
+const vidaJugador2Dom = $('#vidaDcha');
 
-$(document).ready(function(){
-	//audio de la pg
-	let audioEncendido = false;
-	const audio = $('<audio></audio>');
-	audio.attr('src', 'audio/pantalla3.mp3');
-	audio.attr('loop', 'loop');
-	$('body').append(audio);
-	audio[0].play();
-	$('#boton-audio').click(function(){
-		if(!audioEncendido){
-			audio[0].play();
-			audioEncendido=true;
-		}else{
-			audio[0].pause();
-			audioEncendido=false;
-		}
-	});
-	// El fondo será aleatorio
-	let srcFondo = fondos.get(Math.floor(Math.random() * 10) + 1); // Ajuste para incluir el 10
-	$('body').css('background-image', 'url(' + srcFondo + ')');
 
-	// Ajustamos las barras de vida según la vida de los participantes
-	ajustarBarrasVida();
+const piedraJugador1 = $('#piedra1');
+const papelJugador1 = $('#papel1');
+const tijeraJugador1 = $('#tijera1');
 
-	// Solo recogemos la opcion si no estaba añadida
-	$(document).keydown(function(e){
-		switch(e.which) {
-			case 49:
-				if(!aniadido){
-					auxOpcion = 0;
-					aniadido = true;
-				}
-				break;
-			case 50:
-				if(!aniadido){
-					auxOpcion = 1;
-					aniadido = true;
-				}
-				break;
-			case 51:
-				if(!aniadido){
-					auxOpcion = 2;
-					aniadido = true;
-				}
-				break;
-		}
-	})
+const piedraJugador2 = $('#piedra2');
+const papelJugador2 = $('#papel2');
+const tijeraJugador2 = $('#tijera2');
 
-	// Comprobamos la opcion del jugador
-	comprobarOpcionElegida();
+const temporizador = $('#temporizador');
+
+let audioEncendido = true;
+
+window.addEventListener('load', async () => {
+	cargaAudio();
+	cargarFondo();
+	let hayGanador = false;
+	let resultadoJugador1, resultadoJugador2;
+	while (!hayGanador) {
+		// Jugador 1
+		resultadoJugador1 = await escogerResultado(false);
+		piedraJugador1.attr('src', 'img/botones/piedra-f-des.png');
+		papelJugador1.attr('src', 'img/botones/papel-f-des.png');
+		tijeraJugador1.attr('src', 'img/botones/tijeras-f-des.png');
+
+		piedraJugador2.attr('src', 'img/botones/piedra-f.png');
+		papelJugador2.attr('src', 'img/botones/papel-f.png');
+		tijeraJugador2.attr('src', 'img/botones/tijeras-f.png');
+
+		temporizador.attr('src', 'img/vida/tiempo.gif');
+		
+		// Jugador 2
+		resultadoJugador2 = await escogerResultado(esMaquina);
+		piedraJugador2.attr('src', 'img/botones/piedra-f-des.png');
+		papelJugador2.attr('src', 'img/botones/papel-f-des.png');
+		tijeraJugador2.attr('src', 'img/botones/tijeras-f-des.png');
+
+		temporizador.attr('src', 'img/vida/tiempoFin.png');
+		await comprobarGanador(resultadoJugador1, resultadoJugador2);
+		piedraJugador1.attr('src', 'img/botones/piedra-f.png');
+		papelJugador1.attr('src', 'img/botones/papel-f.png');
+		tijeraJugador1.attr('src', 'img/botones/tijeras-f.png');
+
+		temporizador.attr('src', 'img/vida/tiempo.gif');
+
+		$('#imgPlayer1').attr('src', 'img/movimientos/ryu-parado.gif');
+		$('#imgPlayer2').attr('src', 'img/movimientos/ken-parado.gif');
+	}
 });
 
-/**
- * Función que revisa cada medio segundo si se ha elegido una opcion.
- */
-function comprobarOpcionElegida(){
-	let intervalo = setInterval(function(){
-		// Si se añadió una opción, la registramos y continuamos con el flujo
-		if(aniadido){
-			if (esMaquina) {
-				$(document).off('keydown');
-			}
-			aniadido = false;
-			opciones.push(auxOpcion);
-			auxOpcion = null;
-			clearInterval(intervalo);
-			aux=0;
-			finTurno();
-		// Si no se añadió nada, se asigna un valor aleatorio después del tiempo límite
-		} else if (aux === 30 || (!auxPrimerTurno && aux === 4 && esMaquina)) {
-			// Si no se ha asignado ninguna opción, se asigna una opción aleatoria (0, 1 o 2)
-			if(auxOpcion === null) {
-				auxOpcion = Math.floor(Math.random() * 3);
-				opciones.push(auxOpcion);
-				auxOpcion = null;
-				aniadido = false;
-			}
-			clearInterval(intervalo);
-			aux=0;
-			finTurno();
+function cargaAudio() {
+	const musica = $('#musica')[0];
+	musica.play();
+	$('#boton-audio').click(function(){
+		audioEncendido ? musica.pause() : musica.play();
+		audioEncendido = !audioEncendido;
+	});
+}
+
+function cargarFondo() {
+	$('body').css('background-image', `url(${fondos[(Math.floor(Math.random() * 10) + 1)]})`);
+}
+
+async function escogerResultado(esMaquina) {
+	return await new Promise(resolve => {
+		setTimeout(() => {
+			resolve(Object.values(OPCIONES)[Math.floor(Math.random() * 2)]);
+		}, esMaquina ? 2000 : 15000);
+		if (!esMaquina) {
+			document.addEventListener('keydown', e => {
+				const teclaPulsadaAOpcion = {
+					'1': OPCIONES.PIEDRA,
+					'2': OPCIONES.PAPEL,
+					'3': OPCIONES.TIJERA
+				};
+				resolve(teclaPulsadaAOpcion[e.key]);
+			});
 		}
-		aux++;
-	}, 500);
+	})
 }
 
-function finTurno(){
-	if(auxPrimerTurno){
-		$('#piedra1').attr('src', 'img/botones/piedra-f-des.png');
-		$('#papel1').attr('src', 'img/botones/papel-f-des.png');
-		$('#tijera1').attr('src', 'img/botones/tijeras-f-des.png');
-		
-		$('#piedra2').attr('src', 'img/botones/piedra-f.png');
-		$('#papel2').attr('src', 'img/botones/papel-f.png');
-		$('#tijera2').attr('src', 'img/botones/tijeras-f.png');
-		
-		$('#temporizador').attr('src', 'img/vida/tiempo.gif');
-		// La 1º vez que entramos, ponemos 1º turno a false, para que se sepa que ya se ha realizado la tirada del primer turno
-		if(auxPrimerTurno) auxPrimerTurno = false;
-		// Una vez cambiados los estilos, llamamos a volver a elegir opción
-		comprobarOpcionElegida();
-	} else {
-		$('#piedra2').attr('src', 'img/botones/piedra-f-des.png');
-		$('#papel2').attr('src', 'img/botones/papel-f-des.png');
-		$('#tijera2').attr('src', 'img/botones/tijeras-f-des.png');
-		$('#temporizador').attr('src', 'img/vida/tiempoFin.png');
-		resolverJuego();
-	}
+function ajustarBarrasVida(vidaJugador1, vidaJugador2) {
+	console.log(vidaJugador1, vidaJugador2)
+	const imagenesVidaPlayer1 = [
+		'barra_izq4-4',
+		'barra_izq3-4',
+		'barra_izq2-4',
+		'barra_izq1-4'
+	];
+	console.log(`img/vida/${imagenesVidaPlayer1[vidaJugador1]}.png`)
+	const imagenesVidaPlayer2 = [
+		'barra_der4-4',
+		'barra_der3-4',
+		'barra_der2-4',
+		'barra_der1-4'
+	];
+	vidaJugador1Dom.attr('src', `img/vida/${imagenesVidaPlayer1[vidaJugador1]}.png`)
+	vidaJugador2Dom.attr('src', `img/vida/${imagenesVidaPlayer2[vidaJugador2]}.png`)
 }
 
-function resolverJuego(){
-	$.ajax({
-		type: 'GET',
-		dataType: 'json',
-		url: '/juego/Juego.action?accion=jugada&opcionPlayer1=' + opciones[0] + '&opcionPlayer2=' + opciones[1],
-		success: function(data){
-			let src1 = null;
-			let src2 = null;
-			switch (opciones[0]){
-				case 0:
-					src1 = 'img/movimientos/ryu-piedra.gif';
-					break;
-				case 1:
-					src1 = 'img/movimientos/ryu-papel.gif';
-					break;
-				case 2:
-					src1 = 'img/movimientos/ryu-tijeras.gif';
-			}
-			switch (opciones[1]){
-				case 0:
-					src2 = 'img/movimientos/ken-piedra.gif';
-					break;
-				case 1:
-					src2 = 'img/movimientos/ken-papel.gif';
-					break;
-				case 2:
-					src2 = 'img/movimientos/ken-tijeras.gif';
-			}
-			$('#imgPlayer1').attr('src', src1);
-			$('#imgPlayer2').attr('src', src2);
-			if(data != null){
-				setTimeout(function(){
-					comprobarVidas(data);
-				}, 4000);
-			} else {
-				setTimeout(function(){
-					window.location.reload();
-				}, 4000);
+
+async function comprobarGanador(resultadoJugador1, resultadoJugador2) {
+	await fetch('/juego/Juego.action?accion=jugada&opcionPlayer1=' + resultadoJugador1 + '&opcionPlayer2=' + resultadoJugador2, {
+		method: 'GET',
+	})
+	.then(async response => {
+		const imagenesMovimientosJugador1 = {
+			[OPCIONES.PIEDRA]: 'ryu-piedra',
+			[OPCIONES.PAPEL]: 'ryu-papel',
+			[OPCIONES.TIJERA]: 'ryu-tijeras'
+		};
+
+		const imagenesMovimientosJugador2 = {
+			[OPCIONES.PIEDRA]: 'ken-piedra',
+			[OPCIONES.PAPEL]: 'ken-papel',
+			[OPCIONES.TIJERA]: 'ken-tijeras'
+		};
+		$('#imgPlayer1').attr('src', `img/movimientos/${imagenesMovimientosJugador1[resultadoJugador1]}.gif`);
+		$('#imgPlayer2').attr('src', `img/movimientos/${imagenesMovimientosJugador2[resultadoJugador2]}.gif`);
+		await new Promise(resolve => setTimeout(resolve, 4000));
+		const data = await response.json();
+		if (data) {
+			const vidaJugador1 = data.juego.jugadorUno.vidas;
+			const vidaJugador2 = data.juego.jugadorDos.vidas;
+			ajustarBarrasVida(vidaJugador1, vidaJugador2);
+			let jugadorGanador;
+			if (vidaJugador1 === 0) {
+				jugadorGanador = JUGADORES.JUGADOR_2;
+				asignarGanador(jugadorGanador);
+			} else if (vidaJugador2 === 0) {
+				jugadorGanador = JUGADORES.JUGADOR_1;
+				asignarGanador(jugadorGanador);
 			}
 		}
 	});
 }
 
-function comprobarVidas(data){
-	let vidasPlayer1 = data.juego.jugadorUno.vidas;
-	let vidasPlayer2 = data.juego.jugadorDos.vidas;
-	if(vidasPlayer1 === 0) asignarGanador("player2", "player1");
-	else if(vidasPlayer2 === 0) asignarGanador("player1", "player2");
-	else window.location.reload();
-}
-
-function asignarGanador(jugadorVencedor, jugadorPerdedor){
+function asignarGanador(jugadorVencedor){
 	$.ajax({
 		type: 'GET',
-		url: '/juego/Juego.action?accion=asignarGanador&nombreGanador=' + jugadorVencedor + '&nombrePerdedor=' + jugadorPerdedor,
+		url: '/juego/Juego.action?accion=asignarGanador&nombreGanador=' + jugadorVencedor,
 		success: function(){
 			window.location.href = 'http://localhost:8080/juego/Final';
 		}
 	});
-}
-
-function ajustarBarrasVida(){
-	switch($('#vidasplayer1').val()){
-		case "0":
-			$('#vidaIzq').attr('src', 'img/vida/barra_izq4-4.png');
-			break;
-		case "1":
-			$('#vidaIzq').attr('src', 'img/vida/barra_izq3-4.png');
-			break;
-		case "2":
-			$('#vidaIzq').attr('src', 'img/vida/barra_izq2-4.png');
-			break;
-		case "3":
-			$('#vidaIzq').attr('src', 'img/vida/barra_izq1-4.png');
-			break;
-	}
-	switch($('#vidasplayer2').val()){
-		case "0":
-			$('#vidaDcha').attr('src', 'img/vida/barra_der4-4.png');
-			break;
-		case "1":
-			$('#vidaDcha').attr('src', 'img/vida/barra_der3-4.png');
-			break;
-		case "2":
-			$('#vidaDcha').attr('src', 'img/vida/barra_der2-4.png');
-			break;
-		case "3":
-			$('#vidaDcha').attr('src', 'img/vida/barra_der1-4.png');
-			break;
-	}
 }

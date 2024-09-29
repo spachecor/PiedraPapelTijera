@@ -13,6 +13,7 @@
     <script src="js/pre-game.js" defer></script>
 </head>
 <body>
+	<audio id="musica" src="audio/pantalla2.mp3" loop></audio>
 	<button id="boton-audio"><img src="img/botones/musica.png" alt="Piedra" width="100px"></button>
     <div class="columna1">
         <form action="Jugar" method="post" id="nombreJugadoresForm">

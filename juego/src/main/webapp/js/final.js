@@ -1,20 +1,13 @@
+const JUGADORES = {
+	JUGADOR_1: '-1',
+	EMPATE: '0',
+	JUGADOR_2: '1'
+};
+let audioEncendido = true;
 $(document).ready(function(){
 	//audio de la pg
-	let audioEncendido = false;
-	const audio = $('<audio></audio>');
-	audio.attr('src', 'audio/pantalla4.mp3');
-	audio.attr('loop', 'loop');
-	$('body').append(audio);
-	$('#boton-audio').click(function(){
-		if(!audioEncendido){
-			audio[0].play();
-			audioEncendido=true;
-		}else{
-			audio[0].pause();
-			audioEncendido=false;
-		}
-	});
-	if($('#ganador').val()=="player1"){
+	cargaAudio();
+	if($('#ganador').val()==JUGADORES.JUGADOR_1){
 		//gana player1
 		$('#player1').attr('src', 'img/personajes/ryu-win.png');
 		$('#player2').attr('src', 'img/personajes/ken-lose.png');
@@ -26,3 +19,11 @@ $(document).ready(function(){
 		$('#resultado').attr('src', 'img/personajes/win-los-2.png');
 	}
 });
+function cargaAudio() {
+	const musica = $('#musica')[0];
+	musica.play();
+	$('#boton-audio').click(function(){
+		audioEncendido ? musica.pause() : musica.play();
+		audioEncendido = !audioEncendido;
+	});
+}

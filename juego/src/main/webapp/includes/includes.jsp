@@ -22,7 +22,6 @@
 	<link href="https://fonts.googleapis.com/css2?family=Jacquarda+Bastarda+9&display=swap" rel="stylesheet">
 	<!-- Estilo y funcionalidad personalizados -->
 	<link rel="stylesheet" href="css/globals.css">
-    <script src="js/pre-game.js" defer></script>
 </head>
 <body></body>
 </html>

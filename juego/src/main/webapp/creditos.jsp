@@ -14,6 +14,7 @@
     <script src="js/creditos.js" defer></script>
 </head>
 <body>
+		<audio id="musica" src="audio/creditos.mp3"></audio>
 	<button id="boton-audio"><img src="img/botones/musica.png" width="100px"></button>
 	<form action="Creditos" method="post">
 		<input type="hidden" name="accion" value="salir"/>
